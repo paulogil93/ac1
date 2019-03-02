@@ -1,0 +1,28 @@
+--------------------------------------------
+-- Paulo Gil
+-- paulogil@ua.pt
+-- AC1-2017
+--------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.NUMERIC_STD.all;
+
+library work;
+use work.MIPS_pkg.all;
+use work.DisplayUnit_pkg.all;
+
+entity mips_multi_cycle is
+	port(CLOCK_50	: in	std_logic;
+		  SW			: in	std_logic_vector(7 downto 0);
+		  KEY			: in	std_logic_vector(3 downto 0);
+		  HEX0		: out std_logic_vector(6 downto 0);
+		  HEX1		: out std_logic_vector(6 downto 0);
+		  HEX2		: out std_logic_vector(6 downto 0);
+		  HEX3		: out std_logic_vector(6 downto 0);
+		  HEX4		: out std_logic_vector(6 downto 0);
+		  HEX5		: out std_logic_vector(6 downto 0);
+		  HEX6		: out std_logic_vector(6 downto 0);
+		  HEX7		: out std_logic_vector(6 downto 0));
+end mips_multi_cycle;
+

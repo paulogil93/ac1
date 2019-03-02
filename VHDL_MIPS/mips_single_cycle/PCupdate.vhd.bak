@@ -1,0 +1,38 @@
+--------------------------------------------
+-- Paulo Gil
+-- paulogil@ua.pt
+-- AC1-2017
+--------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity PCupdate is
+	port(clk			: in	std_logic;
+		  reset		: in	std_logic;
+		  zero		: in	std_logic;
+		  branch		: in	std_logic;
+		  jump		: in	std_logic;
+		  jAddr26	: in	std_logic_vector(25 downto 0);
+		  offset32	: in	std_logic_vector(31 downto 0);
+		  pc			: out std_logic_vector(31 downto 0));
+end PCupdate;
+
+architecture Structural of PCupdate is
+	signal s_JTA : std_logic_vector(31 downto 0);
+	signal s_offset	: std_logic_vector(31 downto 0);
+	signal s_pc			: std_logic_vector(31 downto 0);
+begin
+	
+	pc: entity work.PC(Behavioral)
+		port map(clk	=>	clk,
+					reset =>	reset,
+					pc		=>	s_pc);
+					
+	s_JTA(31 downto 28) <= s_pc(31 downto 28);
+	s_JTA(27 downto 0) <= shift_left(unsigned(jAddr26), 2);
+	
+	pc <= std_logic_vector(s_pc);
+	
+					
+		

@@ -1,0 +1,31 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity Mux4N is
+	generic(NBITS : positive := 32);
+	port(portA	: in	std_logic_vector(NBITS-1 downto 0);
+		  portB	: in	std_logic_vector(NBITS-1 downto 0);
+		  portC	: in	std_logic_vector(NBITS-1 downto 0);
+		  portD	: in	std_logic_vector(NBITS-1 downto 0);
+		  sel		: in	std_logic_vector(1 downto 0);
+		  muxOut	: out std_logic_vector(NBITS-1 downto 0));
+end Mux4N;
+
+architecture Behavioral of Mux4N is
+begin
+	process(sel)
+	begin
+		case sel is
+			when "00" =>
+				muxOut <= portA;
+			when "01" =>
+				muxOut <= portB;
+			when "10" =>
+				muxOut <= portC;
+			when "11" =>
+				muxOut <= portD;
+			when others =>
+				muxOut <= (others => '0');
+		end case;
+	end process;
+end Behavioral;

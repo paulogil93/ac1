@@ -1,0 +1,16 @@
+--------------------------------------------
+-- Paulo Gil
+-- paulogil@ua.pt
+-- AC1-2017
+--------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.NUMERIC_STD.all;
+
+library work;
+use work.DisplayUnit_pkg.all;
+
+entity DataMemory is
+	generic(ADDR_BUS_SIZE : positive := RAM_ADDR_SIZE);
+	port(
